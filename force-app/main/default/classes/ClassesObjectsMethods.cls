@@ -26,7 +26,7 @@
  * Math class: https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_methods_system_math.htm
  * Classes: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_classes_understanding.htm
  *
- * @author Your Name
+ * @author Anthony Belano
  */
 
 public with sharing class ClassesObjectsMethods {
@@ -40,17 +40,25 @@ public with sharing class ClassesObjectsMethods {
      */
     public static List<String> practiceStringMethods() {
         // Initialize a String with 'Hello, Salesforce!'
+        String msg = 'Hello, Salesforce!';
         
-        // Get the length of the String        
+        // Get the length of the String 
+        Integer msgLength = msg.length();
+
         // Get a substring of the String of the first 5 characters
+        String msgSubstring = msg.substring(0, 5);
+
         // Convert the String to lower case
+        String msgToLowerCase = msg.toLowerCase();
         
         // Return the list with the string data
-        // In the first position add the string length
-        // In the second position add the substring
-        // In the third position add the string in lower case
+        List<String> msgList = new List<String>();
 
-        return null; // Replace null with the variable you used to store the result
+        msgList.add(String.valueOf(msgLength));     // In the first position add the string length
+        msgList.add(msgSubstring);                  // In the second position add the substring
+        msgList.add(msgToLowerCase);                // In the third position add the string in lower case
+
+        return msgList; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -62,14 +70,17 @@ public with sharing class ClassesObjectsMethods {
      */
     public static List<Boolean> checkStringContent(String input) {
         // Initialize a list to store the results
+        List<Boolean> checkStringList = new List<Boolean>();
+
+        Boolean startsWith = input.startsWith('Sales');     // Check if the string starts with 'Sales'
+        Boolean endsWith = input.endswith('Force');         // Check if the string ends with 'Force' 
+        Boolean contains = input.contains('Awesome');      // Check if the string contains 'Awesome'
+
+        checkStringList.add(startsWith);
+        checkStringList.add(endsWith);
+        checkStringList.add(contains);
         
-        // Check if the string starts with 'Sales'
-        
-        // Check if the string ends with 'Force'
-        
-        // Check if the string contains 'Awesome'
-        
-        return null; // Replace null with the variable you used to store the result
+        return checkStringList; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -81,15 +92,21 @@ public with sharing class ClassesObjectsMethods {
      */
     public static String removeDuplicateWords(String sentence) {
         // Split the sentence into words
+        List<String> words = sentence.split(' ');
 
         // Create a set to store the unique words
+        Set<String> wordSet = new Set<String>();
 
         // Add each word to the set
+        for(String word : words) {
+            wordSet.add(word);
+        }
 
         // Join the unique words back into a sentence
+        String uniqueWords = String.join(new List<String>(wordSet), ' ');
 
         // Return the sentence with unique words
-        return null; // Replace null with the variable you used to store the result
+        return uniqueWords; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -102,16 +119,21 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Integer countVowels(String str) {
         // Initialize the result Integer
+        Integer s = 0;
+        
+        for (Integer i = 0; i < str.length(); i++) {
 
-        /*
-        for () {
-            // get individual characters from the string - hint use substring or split
+            // get individual characters from the string - hint use substring or split 
+            String ch = str.substring(i, i + 1);   
+
             // check if the character is a vowel
             // if it is a vowel, increment the result Integer
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                s++;
+            }
         }
-        */
-
-        return null; // Replace null with the variable you used to store the result
+        
+        return s; // Replace null with the variable you used to store the result
     }
 
     /**
