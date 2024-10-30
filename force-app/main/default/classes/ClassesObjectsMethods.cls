@@ -148,16 +148,21 @@ public with sharing class ClassesObjectsMethods {
         List<String> scientistNames = new List<String>{'Tim Berners-Lee', 'Alan Turing', 'Grace Hopper', 'Donald Knuth', 'Guido van Rossum', 'Ken Thompson', 'Stephen Hawking'};
 
         // The variable to store the concatenated string
+        List<String> scientistResult = new List<String>();
 
         // Loop through the list of scientists' names
-
+        for (String scientist : scientistNames) {
+        
             // If the name doesn't contain the letter 'G', skip this iteration
-
+            if (!scientist.toLowerCase().contains('g')) {
+                continue;
+            }   else {
             // Add the name to the result string, followed by a comma
-
+            scientistResult.add(scientist);
+            }
+        }
         // Remove the last comma from the result string
-
-        return null; // Replace null with the variable you used to store the result
+        return String.join(scientistResult, ','); // Replace null with the variable you used to store the result
     }
 
     /**
@@ -169,12 +174,20 @@ public with sharing class ClassesObjectsMethods {
      * @return The absolute value of the difference
      */
     public static Double calculateDifferenceOfSquares(Double a, Double b) {
+        
+        Double aSqRootResult = 0;
+        Double bSqRootResult = 0;
+        Double absDifference = 0;
+
         // Square the input numbers using the Math.pow() function
+        aSqRootResult = Math.pow(a, 2);
+        bSqRootResult = Math.pow(b, 2);
 
         // Calculate the absolute difference using Math.abs() function
+        absDifference = Math.abs(aSqRootResult - bSqRootResult);
 
         // Return the result
-        return null; // Replace null with the variable you used to store the result
+        return absDifference; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -184,10 +197,12 @@ public with sharing class ClassesObjectsMethods {
      * @return A integer between 50 and 100.
      */
     public static Integer generateRandomNumber() {
+
         // Use Math class to generate number between 50 and 100
+        Integer randomNumber = Math.round(Math.random() * (100 - 50)) + 50;
 
         // Return the random integer
-        return null; // Replace null with the variable you used to store the result
+        return randomNumber; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -198,11 +213,12 @@ public with sharing class ClassesObjectsMethods {
      */
     public static String getCurrentDate() {
         // Get the todays date
-
         // Format the current date
+        Date today = Date.today();
+        String formattedDate = today.format();
 
         // Return the result
-        return null; // Replace null with the variable you used to store the result
+        return formattedDate; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -212,15 +228,29 @@ public with sharing class ClassesObjectsMethods {
      * @return The number of the day of the week for the given date.
      */
     public static String getDayOfWeek(DateTime dt) {
+
         // Define a map of day of the week as a key and day number as the value
         // Monday = 1, Tuesday = 2, etc.
+        Map<String, Integer> daysOfWeek = new Map<String, Integer>();
+
+        daysOfWeek.put('Monday', 1);
+        daysOfWeek.put('Tuesday', 2);
+        daysOfWeek.put('Wednesday', 3);
+        daysOfWeek.put('Thursday', 4);
+        daysOfWeek.put('Friday', 5);
+        daysOfWeek.put('Saturday', 6);
+        daysOfWeek.put('Sunday', 7);
 
         // Get the day name using .format('EEEE');
+        String dayName = dt.format('EEEE');
 
         // Get the day number from the map using the day name
+        Integer dayNumber = daysOfWeek.get(dayName);
 
         // Return the result as a string
-        return null; // Replace null with the variable you used to store the result
+        // Replace null with the variable you used to store the result
+        return String.valueof(dayNumber);
+        
     }
 
 
@@ -236,8 +266,13 @@ public with sharing class ClassesObjectsMethods {
     public static Integer calculateYearDifference(Date d1, Date d2) {
 
         // Subtract the difference in years
-
-        return null; // Replace null with the variable you used to store the result
+        if (d1 == null || d2 == null) {
+            return null;
+        } 
+            
+        Integer numOfYears = d2.year() - d1.year();
+    
+        return numOfYears; // Replace null with the variable you used to store the result
     }
 
     /**
